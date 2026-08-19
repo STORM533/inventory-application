@@ -116,6 +116,8 @@ async function main() {
       : process.env.DATABASE_URL;
   const client = new Client({
     connectionString: databaseURL,
+    ssl:
+      process.argv[2] === "production" ? { rejectUnauthorized: false } : false,
   });
   await client.connect();
   await client.query(SQL);
