@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Games | Game Inventory</title>
+    <link rel="stylesheet" href="/styles/common.css">
+    <link rel="stylesheet" href="/styles/games.css">
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <a href="/" class="logo">
+            Game Inventory
+        </a>
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/games" class="active">Games</a>
+            <a href="/genres">Genres</a>
+            <a href="/companies">Companies</a>
+        </div>
+        <a href="/games/new" class="add-game-button">
+            Add Game
+        </a>
+    </nav>
+
+
+    <main class="container">
+        <div class="page-heading">
+            <h1>Games</h1>
+            <p>Browse and manage your game collection.</p>
+        </div>
+        <div class="game-grid">
+            <% games.forEach(game => { %>
+            <a href="/games/<%= game.id %>" class="game-card">
+                <h2><%= game.name %></h2>
+                <span class="arrow">→</span>
+            </a>
+            <% }); %>
+        </div>
+    </main>
+</body>
+
+</html>

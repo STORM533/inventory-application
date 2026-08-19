@@ -1,0 +1,42 @@
+/* =========================
+   HOME PAGE
+   ========================= */
+
+.hero {
+  min-height: calc(100vh - 78px);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  text-align: center;
+}
+
+.hero-content {
+  max-width: 700px;
+
+  padding: 2rem;
+}
+
+.hero h1 {
+  margin-bottom: 1rem;
+
+  font-size: 3rem;
+  line-height: 1.1;
+}
+
+.hero p {
+  margin-bottom: 2rem;
+
+  color: #687286;
+
+  font-size: 1.2rem;
+}
+
+.hero-actions {
+  display: flex;
+
+  justify-content: center;
+
+  gap: 1rem;
+}

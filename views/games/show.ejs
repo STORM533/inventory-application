@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title><%= game.name %> | Game Inventory</title>
+
+    <link rel="stylesheet" href="/styles/common.css">
+    <link rel="stylesheet" href="/styles/games.css">
+</head>
+
+<body>
+    <nav class="navbar">
+        <a href="/" class="logo">Game Inventory</a>
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/games">Games</a>
+            <a href="/genres">Genres</a>
+            <a href="/companies">Companies</a>
+        </div>
+    </nav>
+    <main class="container">
+        <div class="page-header">
+            <h1><%= game.name %></h1>
+            <a href="/games" class="button secondary">
+                Back
+            </a>
+        </div>
+        <section class="details">
+            <div>
+                <h2>Genres</h2>
+                <ul>
+                    <% game.genres.forEach(genre => { %>
+                    <li><%= genre.genre %></li>
+                    <% }); %>
+                </ul>
+            </div>
+            <div>
+                <h2>Companies</h2>
+                <ul>
+                    <% game.companies.forEach(company => { %>
+                    <li><%= company.company %></li>
+                    <% }); %>
+                </ul>
+            </div>
+        </section>
+        <form action="/games/<%= game.id %>/delete" method="POST">
+            <button type="submit" class="delete-button">
+                Delete Game
+            </button>
+        </form>
+    </main>
+</body>
+
+</html>

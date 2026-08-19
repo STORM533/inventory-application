@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Game | Game Inventory</title>
+    <link rel="stylesheet" href="/styles/common.css">
+    <link rel="stylesheet" href="/styles/games.css">
+</head>
+
+<body>
+    <nav class="navbar">
+        <a href="/" class="logo">Game Inventory</a>
+
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/games">Games</a>
+            <a href="/genres">Genres</a>
+            <a href="/companies">Companies</a>
+        </div>
+    </nav>
+    <main class="container">
+        <h1>Add Game</h1>
+        <% if (typeof errors !== "undefined") { %>
+        <div class="errors">
+            <% errors.forEach(error => { %>
+            <p><%= error.msg %></p>
+            <% }); %>
+        </div>
+        <% } %>
+        <form action="/games/new" method="POST" class="game-form">
+            <div class="form-group">
+                <label for="name">Game Name</label>
+                <input type="text" id="name" name="name" value="<%= typeof name !== 'undefined' ? name : '' %>">
+            </div>
+            <div class="form-group">
+                <h2>Genres</h2>
+                <div class="checkbox-list">
+                    <% genres.forEach(genre => { %>
+                    <label>
+                        <input type="checkbox" name="genreIds" value="<%= genre.id %>">
+                        <%= genre.genre %>
+                    </label>
+                    <% }); %>
+                </div>
+            </div>
+            <div class="form-group">
+                <h2>Companies</h2>
+                <div class="checkbox-list">
+                    <% companies.forEach(company => { %>
+                    <label>
+                        <input type="checkbox" name="companyIds" value="<%= company.id %>">
+                        <%= company.company %>
+                    </label>
+                    <% }); %>
+                </div>
+            </div>
+            <div class="form-actions">
+                <button type="submit" class="button">
+                    Add Game
+                </button>
+                <a href="/games" class="button secondary">
+                    Cancel
+                </a>
+            </div>
+        </form>
+    </main>
+</body>
+
+</html>

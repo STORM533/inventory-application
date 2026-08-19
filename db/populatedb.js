@@ -4,6 +4,12 @@ const { Client } = require("pg");
 dotenv.config();
 
 const SQL = `
+DROP TABLE IF EXISTS game_companies;
+DROP TABLE IF EXISTS game_genres;
+DROP TABLE IF EXISTS companies;
+DROP TABLE IF EXISTS genres;
+DROP TABLE IF EXISTS games;
+
 CREATE TABLE IF NOT EXISTS genres (
     id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
     genre TEXT
@@ -19,13 +25,13 @@ CREATE TABLE IF NOT EXISTS games (
 );
 CREATE TABLE IF NOT EXISTS game_genres (
     id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
-    game_id INTEGER REFERENCES games(id),
+    game_id INTEGER REFERENCES games(id) ON DELETE CASCADE,
     genre_id INTEGER REFERENCES genres(id),
     UNIQUE(game_id,genre_id)
 );
 CREATE TABLE IF NOT EXISTS game_companies (
     id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
-    game_id INTEGER REFERENCES games(id),
+    game_id INTEGER REFERENCES games(id) ON DELETE CASCADE,
     company_id INTEGER REFERENCES companies(id),
     UNIQUE (game_id,company_id)
 );
