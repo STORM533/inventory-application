@@ -9,7 +9,6 @@ A simple inventory management web application built with **Express.js** and **Po
 - View categories and items
 - Edit items
 - Delete items
-- Admin password protection for edit/delete actions
 - PostgreSQL database
 
 ## Tech Stack
