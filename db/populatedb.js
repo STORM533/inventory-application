@@ -110,8 +110,12 @@ WHERE (g.name, c.company) IN (
 
 async function main() {
   console.log("seeding...");
+  const databaseURL =
+    process.argv[2] === "production"
+      ? process.env.PRODUCTION_DATABASE_URL
+      : process.env.DATABASE_URL;
   const client = new Client({
-    connectionString: process.env.DATABASE_URL,
+    connectionString: DATABASE_URL,
   });
   await client.connect();
   await client.query(SQL);
