@@ -4,12 +4,6 @@ const { Client } = require("pg");
 dotenv.config();
 
 const SQL = `
-DROP TABLE IF EXISTS game_companies;
-DROP TABLE IF EXISTS game_genres;
-DROP TABLE IF EXISTS companies;
-DROP TABLE IF EXISTS genres;
-DROP TABLE IF EXISTS games;
-
 CREATE TABLE IF NOT EXISTS genres (
     id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
     genre TEXT
