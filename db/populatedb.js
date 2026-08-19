@@ -115,7 +115,7 @@ async function main() {
       ? process.env.PRODUCTION_DATABASE_URL
       : process.env.DATABASE_URL;
   const client = new Client({
-    connectionString: DATABASE_URL,
+    connectionString: databaseURL,
   });
   await client.connect();
   await client.query(SQL);
