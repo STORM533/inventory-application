@@ -46,7 +46,11 @@
                 </ul>
             </div>
         </section>
-        <form action="/games/<%= game.id %>/delete" method="POST">
+        <form action="/games/<%= game.id %>/delete" method="POST" class="delete-form">
+            <label for="deletePassword">
+                Enter delete password
+            </label>
+            <input type="password" id="deletePassword" name="deletePassword" required>
             <button type="submit" class="delete-button">
                 Delete Game
             </button>

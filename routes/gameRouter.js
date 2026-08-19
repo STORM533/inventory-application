@@ -1,10 +1,10 @@
 const { Router } = require("express");
 const gameRouter = Router();
 const gameController = require("../controllers/gameController");
-
+const deletePassword = require("../middleware/deletePassword");
 gameRouter.get("/", gameController.getGames);
 gameRouter.get("/new", gameController.getGameForm);
 gameRouter.post("/new", gameController.postGameForm);
 gameRouter.get("/:id", gameController.getGame);
-gameRouter.post("/:id/delete", gameController.deleteGame);
+gameRouter.post("/:id/delete", deletePassword, gameController.deleteGame);
 module.exports = gameRouter;
