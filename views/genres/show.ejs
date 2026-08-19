@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= genre.genre %> | Game Inventory</title>
+    <link rel="stylesheet" href="/styles/common.css">
+    <link rel="stylesheet" href="/styles/genres.css">
+    <link rel="stylesheet" href="/styles/games.css">
+</head>
+
+<body>
+    <nav class="navbar">
+        <a href="/" class="logo">
+            Game Inventory
+        </a>
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/games">Games</a>
+            <a href="/genres" class="active">Genres</a>
+            <a href="/companies">Companies</a>
+        </div>
+        <a href="/games/new" class="add-game-button">
+            Add Game
+        </a>
+    </nav>
+    <main class="container">
+        <div class="page-heading genre-header">
+            <div>
+                <h1><%= genre.genre %></h1>
+                <p>Games in this genre.</p>
+            </div>
+            <a href="/genres" class="button secondary">
+                Back to Genres
+            </a>
+        </div>
+        <section class="genre-games">
+            <% if (genre.games.length === 0) { %>
+            <p class="empty-message">
+                No games belong to this genre yet.
+            </p>
+            <% } else { %>
+            <div class="game-grid">
+                <% genre.games.forEach(game => { %>
+                <a href="/games/<%= game.id %>" class="game-card">
+                    <h2><%= game.name %></h2>
+                    <span class="arrow">→</span>
+                </a>
+                <% }); %>
+            </div>
+            <% } %>
+        </section>
+        <form action="/genres/<%= genre.id %>/delete" method="POST" class="delete-form">
+            <button type="submit" class="delete-button">
+                Delete Genre
+            </button>
+        </form>
+    </main>
+</body>
+
+</html>

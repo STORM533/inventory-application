@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= company.company %> | Game Inventory</title>
+    <link rel="stylesheet" href="/styles/common.css">
+    <link rel="stylesheet" href="/styles/companies.css">
+    <link rel="stylesheet" href="/styles/games.css">
+</head>
+
+<body>
+    <nav class="navbar">
+        <a href="/" class="logo">
+            Game Inventory
+        </a>
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/games">Games</a>
+            <a href="/genres">Genres</a>
+            <a href="/companies" class="active">Companies</a>
+        </div>
+        <a href="/games/new" class="add-game-button">
+            Add Game
+        </a>
+    </nav>
+    <main class="container">
+        <div class="page-heading company-header">
+            <div>
+                <h1><%= company.company %></h1>
+                <p>Games associated with this company.</p>
+            </div>
+            <a href="/companies" class="button secondary">
+                Back to Companies
+            </a>
+        </div>
+        <section class="company-games">
+            <% if (company.games.length === 0) { %>
+            <p class="empty-message">
+                No games are associated with this company yet.
+            </p>
+            <% } else { %>
+            <div class="game-grid">
+                <% company.games.forEach(game => { %>
+                <a href="/games/<%= game.id %>" class="game-card">
+                    <h2><%= game.name %></h2>
+                    <span class="arrow">→</span>
+                </a>
+                <% }); %>
+            </div>
+            <% } %>
+        </section>
+        <form action="/companies/<%= company.id %>/delete" method="POST" class="delete-form">
+            <button type="submit" class="delete-button">
+                Delete Company
+            </button>
+        </form>
+    </main>
+</body>
+
+</html>

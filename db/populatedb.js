@@ -26,13 +26,13 @@ CREATE TABLE IF NOT EXISTS games (
 CREATE TABLE IF NOT EXISTS game_genres (
     id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
     game_id INTEGER REFERENCES games(id) ON DELETE CASCADE,
-    genre_id INTEGER REFERENCES genres(id),
+    genre_id INTEGER REFERENCES genres(id) ON DELETE CASCADE,
     UNIQUE(game_id,genre_id)
 );
 CREATE TABLE IF NOT EXISTS game_companies (
     id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
     game_id INTEGER REFERENCES games(id) ON DELETE CASCADE,
-    company_id INTEGER REFERENCES companies(id),
+    company_id INTEGER REFERENCES companies(id) ON DELETE CASCADE,
     UNIQUE (game_id,company_id)
 );
 INSERT INTO genres (genre) VALUES
